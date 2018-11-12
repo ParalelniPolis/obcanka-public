@@ -1,0 +1,40 @@
+allprojects {
+    buildscript {
+        repositories {
+	        google()
+	        jcenter()
+		mavenLocal()
+	        mavenCentral()
+        }
+    }
+    repositories {
+	google()
+        jcenter()
+        mavenLocal()
+        mavenCentral()
+    }
+
+    tasks.withType(JavaCompile) {
+        project.sourceCompatibility = '1.8'
+        options.encoding = 'UTF-8'
+        options.incremental = true
+    }
+}
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+	google()
+        jcenter()
+	mavenLocal()
+        mavenCentral()
+    }
+}
+
+task allDependencies {
+    description 'Recursively call dependencies on all sub-projects.'
+    project.getSubprojects().each {
+        dependsOn it.getTasksByName('dependencies', false)
+    }
+}
+
