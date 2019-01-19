@@ -20,6 +20,12 @@ task execute(type:JavaExec) {
    classpath = sourceSets.main.runtimeClasspath
 }
 
+task(verify, dependsOn: 'execute', type: JavaExec) {
+    main = 'cz.paralelnipolis.obcanka.publictools.VerifyCertificates'
+    classpath = sourceSets.main.runtimeClasspath
+    args './issuer_of_short.crt', '../desktop_app/short.crt'
+}
+
 
 task customFatJar(type: Jar) {
     manifest {
