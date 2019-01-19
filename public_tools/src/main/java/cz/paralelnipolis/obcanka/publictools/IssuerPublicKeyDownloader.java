@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package obcanka.publictools;
+package cz.paralelnipolis.obcanka.publictools;
 
 import com.google.common.util.concurrent.ListenableFuture;
 import org.bitcoinj.core.*;
