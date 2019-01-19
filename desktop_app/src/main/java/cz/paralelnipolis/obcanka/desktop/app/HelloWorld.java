@@ -56,7 +56,7 @@ public class HelloWorld {
         System.out.println("longCert = " + longCert);
 
         Certificate shortCert = cm.getCertificate(Certificate.CertificateType.AUTHORIZATION);
-        System.out.println("shortCert = " + longCert);
+        System.out.println("shortCert = " + shortCert);
 
         try {
             FileOutputStream fos = new FileOutputStream("long.crt");

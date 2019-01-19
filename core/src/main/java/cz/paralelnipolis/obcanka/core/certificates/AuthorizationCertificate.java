@@ -15,12 +15,19 @@
  */
 package cz.paralelnipolis.obcanka.core.certificates;
 
-public class AuthorizationCertificate extends Certificate{
+public class AuthorizationCertificate extends Certificate {
     public AuthorizationCertificate(byte[] data, CertificateType type) {
         super(data, type);
     }
 
-    public String getSerialNumber() {
-        return extractName("2.5.4.5");
+    public String getDocumentNumber() {
+        return extractName("CN");
+    }
+
+    @Override
+    public String toString() {
+        return "IdentificationCertificate{" +
+                "documentNumber: " + getDocumentNumber() + "\n" +
+                '}';
     }
 }
