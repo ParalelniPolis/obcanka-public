@@ -1,0 +1,14 @@
+apply plugin: 'java'
+
+dependencies {
+    implementation project(':core')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+jar {
+    baseName 'obcanka_desktop_lib'
+}
+
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
