@@ -69,7 +69,3 @@ Vítězné týmy se mohou těšit na:
 *   Podíl na [bitcoinové odměně 3Bz3pGkTQJf7NSxhtE8YicHffyDRCbjqeb](https://www.blockchain.com/btc/address/3Bz3pGkTQJf7NSxhtE8YicHffyDRCbjqeb)
 
 Nemůžete se zúčastnit, ale chcete týmy motivovat? Přispějte na výše uvedenou bitcoinovou adresu.
-
-### Registrace
-
-Zájemci o účast na hackathonu musí [**vyplnit krátký formulář**](https://docs.google.com/forms/d/e/1FAIpQLSfrGA_fd6B_garfdU26Wi0-AWdKy0-NFyyT6dzUeMLt_XuWDg/viewform), na základě kterého obdrží další informace.
