@@ -19,9 +19,11 @@ import cz.paralelnipolis.obcanka.core.HexUtils;
 import cz.paralelnipolis.obcanka.core.card.Card;
 import cz.paralelnipolis.obcanka.core.certificates.Certificate;
 import cz.paralelnipolis.obcanka.core.communication.CardException;
+import cz.paralelnipolis.obcanka.core.debug.DebugCardInterface;
 import cz.paralelnipolis.obcanka.core.communication.ICardInterface;
 import cz.paralelnipolis.obcanka.desktop.lib.DesktopCardInterface;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -30,7 +32,13 @@ import java.io.IOException;
  */
 public class HelloWorld {
     public static void main(String[] args) {
-        DesktopCardInterface ci = DesktopCardInterface.create();
+        FileOutputStream logToStream = null;
+        try {
+            logToStream = new FileOutputStream("debug.log");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        ICardInterface ci = new DebugCardInterface(DesktopCardInterface.create(), true, logToStream);
         try {
             downloadCertificates(ci);
         } catch (CardException e) {

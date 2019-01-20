@@ -87,4 +87,14 @@ public class HexUtils {
         }
         return bos.toByteArray();
     }
+
+    public static String intToHexAndDec(int val) {
+        StringBuilder sb = new StringBuilder();
+        String hex = Integer.toHexString(val);
+        if (hex.length() == 1) {
+            sb.append('0');
+        }
+        sb.append(hex + "("+ val + " dec)");
+        return sb.toString();
+    }
 }
