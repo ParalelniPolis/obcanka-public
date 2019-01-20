@@ -15,17 +15,28 @@
  */
 package cz.paralelnipolis.obcanka.desktop.app;
 
+import cz.paralelnipolis.obcanka.core.communication.ICardInterface;
+import cz.paralelnipolis.obcanka.core.debug.DebugCardInterface;
 import cz.paralelnipolis.obcanka.core.network.Client;
 import cz.paralelnipolis.obcanka.core.scripting.ScriptExecutor;
 import cz.paralelnipolis.obcanka.core.scripting.ScriptPlayer;
 import cz.paralelnipolis.obcanka.desktop.lib.DesktopCardInterface;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 /**
  * This class demonstrates how to login into eidentita.cz
  */
 public class Authenticate {
     public static void main(String[] args) {
-        DesktopCardInterface ci = DesktopCardInterface.create();
+        FileOutputStream logToStream = null;
+        try {
+            logToStream = new FileOutputStream("debug.log");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        ICardInterface ci = new DebugCardInterface(DesktopCardInterface.create(),true, logToStream);
         boolean result = authenticate(ci);
         if (result) {
             System.out.println("Congratulations! You are successfully authenticated.");
@@ -34,7 +45,7 @@ public class Authenticate {
         }
     }
 
-    private static boolean authenticate(DesktopCardInterface ci) {
+    private static boolean authenticate(ICardInterface ci) {
         ScriptExecutor executor = new ScriptExecutor(ci);
         Client client = new Client();
         ScriptPlayer player = new ScriptPlayer(executor, client);
