@@ -45,6 +45,7 @@ Certifikát bude uložen do ./public_tools/issuer_of_short.crt
  ./gradlew helloworld
 ```
 Certifikáty budou uloženy do ./desktop_app/short.crt a ./desktop_app/long.crt
+
 5. Ověření zda byl certifikát stažený z karty vydán issuerem jehož certifikát byl stažen z blockchainu
 ```bash
  ./gradlew verify
