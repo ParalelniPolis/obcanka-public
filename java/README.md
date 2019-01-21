@@ -1,5 +1,5 @@
 
-Java knihovna pracující s eObčankou
+Java a Android knihovna pracující s eObčankou
 ====================================
 Doporučená četba: [zde](https://github.com/ParalelniPolis/obcanka-public/blob/master/java/doc/Obcanka_20190119.pdf)
 
@@ -15,9 +15,16 @@ Požadavky
 3. Požadavky na software
 - Projekt je vyvíjen na Linuxu (Ubuntu 16.04), ale fungovat by měl i na ostatních Linux distribucích a Windows.
 - Je požadováno Open JDK 8 (Pozor s Oracle JDK nefunguje detekce čtečky karet). S vyšší verzí JDK nelze kompilovat Android část.
+- Pokud chcete kompilovat také Android část odkomentujte Android moduly v settings.gradle
+4. Instrukce pro vývojáře
+- Projekt si nejdříve forkněte a své změny do hhlavního projektu zasílejte prostřednictvím pull requestů
 
 Postup
 =========
+0. Stažení projektu
+```bash
+ git clone https://github.com/ParalelniPolis/obcanka-public.git
+```
 1. Kompilace:
 ```bash
  ./gradlew clean build
