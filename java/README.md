@@ -3,6 +3,14 @@ Java a Android knihovna pracující s eObčankou
 ====================================
 Doporučená četba: [zde](https://github.com/ParalelniPolis/obcanka-public/blob/master/java/doc/Obcanka_20190119.pdf)
 
+Příkladové certifikáty(není zač):
+
+| Jméno | Popis |
+| --- | --- |
+|[short.crt](https://github.com/ParalelniPolis/obcanka-public/blob/master/java/doc/short.crt)| Krátký certifikát. Obsahuje pouze číslo občanského průkazu. Všichni občani jej mají podepsaný stejným klíčem vydavatele.|
+|[long.crt](https://github.com/ParalelniPolis/obcanka-public/blob/master/java/doc/long.crt)|Dlouhý certifikát. Obsahuje veškeré údaje, které jsou uvedeny na obou stranách občanského průkazu. Je podepsaný jiným vydavatelem než krátký certifikát. Vydavatel mění podepisovací klíč jednou měsíčně.|
+|[issuer_of_short.crt](https://github.com/ParalelniPolis/obcanka-public/blob/master/java/doc/issuer_of_short.crt)|Vypočtený certifikát vydavatele dlouhého certifikátu|
+
 Požadavky
 =========
 1. Podporovaný hardware pro **Linux** nebo **Windows**:
