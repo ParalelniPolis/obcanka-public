@@ -1,6 +1,6 @@
 include ':public_tools'
-include ':android_app'
-include ':android_lib'
+//include ':android_app'
+//include ':android_lib'
 include ':desktop_lib'
 include ':desktop_app'
 include ':core'
