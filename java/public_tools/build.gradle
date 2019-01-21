@@ -1,0 +1,41 @@
+apply plugin: "java"
+
+dependencies {
+    implementation project(':core')
+    implementation project(':desktop_lib')
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile(group: 'org.web3j', name: 'crypto', version: '3.3.1')
+    compile(group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.60')
+    compile(group: 'org.bitcoinj', name: 'bitcoinj-core', version: '0.14.1')
+}
+
+jar {
+    baseName 'obcanka_public_tools'
+}
+
+task download(type:JavaExec) {
+   main = 'cz.paralelnipolis.obcanka.publictools.IssuerPublicKeyDownloader'
+   classpath = sourceSets.main.runtimeClasspath
+}
+
+task(verify, type: JavaExec) {
+    main = 'cz.paralelnipolis.obcanka.publictools.VerifyCertificates'
+    classpath = sourceSets.main.runtimeClasspath
+    args './issuer_of_short.crt', '../desktop_app/short.crt'
+}
+
+
+task customFatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'cz.paralelnipolis.obcanka.publictools.IssuerPublicKeyDownloader'
+    }
+    baseName = 'obcanka_public_tools_fatjar'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+build.finalizedBy(customFatJar)
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

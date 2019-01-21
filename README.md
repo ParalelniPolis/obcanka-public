@@ -1,12 +1,23 @@
-How to download issuer's public key:
-====================================
-1. You need to have Java 8 installed.
-2. Run from command line:
-```bash
- ./gradlew clean build execute
-```
-3. Certificate should be generated in ./public_tools/issuer_of_short.crt
 
+Seznam projektů pracujících s eObčankou:
+=========================================
+| Jmeno projeku | Popis projektu | Odkaz na projekt|
+| --- | --- | --- |
+| **obcanka-reader**|Čtečka eObcanek jako USB klavesnice | https://github.com/premek/obcanka-reader |
+| **Czech ID card service** |Multiplatformni open-source identifikacni klient  | https://github.com/devnautica/czeidcardservice |
+| **soFair-eObcanka** | JS knihovna pro přihlášení, postaveno nad řešením Czech ID card service + použití v aplikaci petiční systém | https://github.com/Hixqqo/soFair-eObcanka |
+| **eObcanka.Java** |  Java knihovna pro práci s eObčankou  | https://github.com/ParalelniPolis/obcanka-public/java | 
+| **eObcanka.NET** |  .NET knihovna pro práci s eObčankou  | https://github.com/wurducius/eObcanka.NET | 
+| **oPYcanka** | Python knihovna pro práci s eObčankou | https://github.com/ParalelniPolis/opycanka |
+| **eobcanka-rust** | Minimální Rust lib impementace pro práci s eObčankou | https://github.com/Qubeo/eobcanka-rust |
+| **EOP** | Python skript umožnující výpočet veřejného klíče z podpisu certifikátu uloženého na eObčance  | https://github.com/andrewkozlik/eop
+
+Zajímavé dokumenty k eObčance:
+========================================
+| Popis | Odkaz |
+| --- | --- |
+| Prezentace pro vývojáře z Hackathonu k základnímu seznámení se s eObčankou | https://github.com/ParalelniPolis/obcanka-public/blob/master/java/doc/Obcanka_20190119.pdf |
+| ISO7816 | http://cardwerk.com/smart-card-standard-iso7816-4-section-5-basic-organizations |
 
 Neveřejné veřejné:
 ==================
@@ -31,8 +42,9 @@ Odmítnutím zveřejnit veřejné klíče k certifikátům stát vytváří umě
 
 Pokud stát nesmyslně odmítá veřejnosti veřejností financovaný systém otevřít, učiníme to za něj (není zač).
 
-### Hackathon eObčanka 19.-20. 1. 2019 v Paralelní Polis
+![Hackathon](https://github.com/b00lean/obcanka-public/raw/master/img/Hackaton.jpg)
 
+### Hackathon eObčanka 2019 19.-20. 1. 2019 v Paralelní Polis
 Třetí lednový víkend pořádá Paralelní Polis hackathon, který si klade za cíl otevřít platformu eObčanek, zkontrolovat jejich bezpečnost a přinést nové možnosti jejich využití.
 
 #### Podmínky
@@ -69,3 +81,18 @@ Vítězné týmy se mohou těšit na:
 *   Podíl na [bitcoinové odměně 3Bz3pGkTQJf7NSxhtE8YicHffyDRCbjqeb](https://www.blockchain.com/btc/address/3Bz3pGkTQJf7NSxhtE8YicHffyDRCbjqeb)
 
 Nemůžete se zúčastnit, ale chcete týmy motivovat? Přispějte na výše uvedenou bitcoinovou adresu.
+
+### Výsledky
+
+| Umístění | Tým | Popis projektu | Odkaz na projekt|
+| --- | --- | --- | --- |
+| 1. | Devnautica + soFair | Multiplatformni open-source identifikacni klient + JS knihovna pro přihlášení, postaveno nad řešením týmu Devnautica + použití v aplikaci petiční systém | https://github.com/Hixqqo/soFair-eObcanka a https://github.com/devnautica/czeidcardservice|
+| 2. | Premek | Čtečka eObcanek jako USB klavesnice | https://github.com/premek/obcanka-reader |
+| 3. | Auxilium & Warden Audit|	Bezpečnostní audit systému eObčanka Identifikace. Identifikace nezdokumentovaných a nezmámých funkcionalit a případných bezpečnostních chyb | TAJNÉ |
+| 4. | Submission | .NET Library + Utility application | https://github.com/wurducius/eObcanka.NET | 
+| 5. | oPYcanka | Python knihovna pro práci s eObčankou | https://github.com/ParalelniPolis/opycanka |
+| 6. | MindFoc | Minimální Rust lib impementace | https://github.com/Qubeo/eobcanka-rust |
+
+
+
+

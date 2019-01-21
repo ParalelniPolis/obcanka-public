@@ -1,0 +1,37 @@
+apply plugin: 'java'
+
+dependencies {
+    implementation project(':core')
+    implementation project(':desktop_lib')
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+jar {
+    baseName 'obcanka_desktop_app'
+}
+
+task(helloworld, type: JavaExec) {
+    main = 'cz.paralelnipolis.obcanka.desktop.app.HelloWorld'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(authenticate, type: JavaExec) {
+    main = 'cz.paralelnipolis.obcanka.desktop.app.Authenticate'
+    standardInput = System.in
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+
+task customFatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'cz.paralelnipolis.obcanka.desktop.app.HelloWorld'
+    }
+    baseName = 'obcanka_public_tools_fatjar'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+build.finalizedBy(customFatJar)
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
