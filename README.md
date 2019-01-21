@@ -3,14 +3,14 @@ Seznam projektů pracujících s eObčankou:
 =========================================
 | Jmeno projeku | Popis projektu | Odkaz na projekt|
 | --- | --- | --- |
-| *obcanka-reader*|Čtečka eObcanek jako USB klavesnice | https://github.com/premek/obcanka-reader |
-| *Czech ID card service* |Multiplatformni open-source identifikacni klient  | https://github.com/devnautica/czeidcardservice |
-| *soFair-eObcanka* | JS knihovna pro přihlášení, postaveno nad řešením Czech ID card service + použití v aplikaci petiční systém | https://github.com/Hixqqo/soFair-eObcanka |
-| *eObcanka.Java* |  Java knihovna pro práci s eObčankou  | https://github.com/ParalelniPolis/obcanka-public/java | 
-| *eObcanka.NET* |  .NET knihovna pro práci s eObčankou  | https://github.com/wurducius/eObcanka.NET | 
-| *oPYcanka* | Python knihovna pro práci s eObčankou | https://github.com/ParalelniPolis/opycanka |
-| *eobcanka-rust* | Minimální Rust lib impementace pro práci s eObčankou | https://github.com/Qubeo/eobcanka-rust |
-
+| **obcanka-reader**|Čtečka eObcanek jako USB klavesnice | https://github.com/premek/obcanka-reader |
+| **Czech ID card service** |Multiplatformni open-source identifikacni klient  | https://github.com/devnautica/czeidcardservice |
+| **soFair-eObcanka** | JS knihovna pro přihlášení, postaveno nad řešením Czech ID card service + použití v aplikaci petiční systém | https://github.com/Hixqqo/soFair-eObcanka |
+| **eObcanka.Java** |  Java knihovna pro práci s eObčankou  | https://github.com/ParalelniPolis/obcanka-public/java | 
+| **eObcanka.NET** |  .NET knihovna pro práci s eObčankou  | https://github.com/wurducius/eObcanka.NET | 
+| **oPYcanka** | Python knihovna pro práci s eObčankou | https://github.com/ParalelniPolis/opycanka |
+| **eobcanka-rust** | Minimální Rust lib impementace pro práci s eObčankou | https://github.com/Qubeo/eobcanka-rust |
+| **EOP** | Python skript umožnující výpočet veřejného klíče z podpisu certifikátu uloženého na eObčance  | https://github.com/andrewkozlik/eop
 
 Neveřejné veřejné:
 ==================
