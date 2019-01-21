@@ -6,7 +6,7 @@ Požadavky
 =========
 1. Podporovaný hardware pro Linux nebo Windows:
 - USB Reader HID Omnikey 3021 
-- [Čtečka čipových karet +iD][https://www.xtel.cz/obchod/usb-ctecka-cipovych-karet-id]  
+- [Čtečka čipových karet +iD](https://www.xtel.cz/obchod/usb-ctecka-cipovych-karet-id)
 2. Podporovaný hardware pro Android
 - ACS ACR38U-ND PocketMate II
 - ACS ACR39U-NF PocketMate II USB-C Smart Card Reader
@@ -23,7 +23,7 @@ Požadavky
  ./gradlew download
 ```
 Certifikát bude uložen do ./public_tools/issuer_of_short.crt
-6. Spuštění příkladu, který přečte certifikáty z eObčanky a uloží je na disk. *Vyžaduje čtečku karet*.
+6. Spuštění příkladu, který přečte certifikáty z eObčanky a uloží je na disk. **Vyžaduje čtečku karet**.
 ```bash
  ./gradlew helloworld
 ```
@@ -32,7 +32,7 @@ Certifikáty budou uloženy do ./desktop_app/short.crt a ./desktop_app/long.crt
 ```bash
  ./gradlew verify
 ```
-8. Ověření správnosti IOK přihlášením na portál občana
+8. Ověření správnosti IOK přihlášením na portál občana. **Vyžaduje čtečku karet**
 ```bash
  ./gradlew authenticate
 ```
