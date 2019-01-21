@@ -35,7 +35,7 @@ public class ScriptPlayer {
     static class UIEntryProvider implements cz.paralelnipolis.obcanka.core.scripting.IUIEntryProvider {
         @Override
         public String getPIN() {
-            System.out.print("Please enter PIN[and press ENTER]:");
+            System.out.print("Please enter IOK[and press ENTER]:");
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String pin = null;
             try {

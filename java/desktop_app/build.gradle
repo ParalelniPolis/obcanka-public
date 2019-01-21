@@ -11,9 +11,15 @@ jar {
     baseName 'obcanka_desktop_app'
 }
 
-task execute(type:JavaExec) {
-   main = 'cz.paralelnipolis.obcanka.desktop.app.HelloWorld'
-   classpath = sourceSets.main.runtimeClasspath
+task(helloworld, type: JavaExec) {
+    main = 'cz.paralelnipolis.obcanka.desktop.app.HelloWorld'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task(authenticate, type: JavaExec) {
+    main = 'cz.paralelnipolis.obcanka.desktop.app.Authenticate'
+    standardInput = System.in
+    classpath = sourceSets.main.runtimeClasspath
 }
 
 

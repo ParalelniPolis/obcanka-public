@@ -15,12 +15,12 @@ jar {
     baseName 'obcanka_public_tools'
 }
 
-task execute(type:JavaExec) {
+task download(type:JavaExec) {
    main = 'cz.paralelnipolis.obcanka.publictools.IssuerPublicKeyDownloader'
    classpath = sourceSets.main.runtimeClasspath
 }
 
-task(verify, dependsOn: 'execute', type: JavaExec) {
+task(verify, type: JavaExec) {
     main = 'cz.paralelnipolis.obcanka.publictools.VerifyCertificates'
     classpath = sourceSets.main.runtimeClasspath
     args './issuer_of_short.crt', '../desktop_app/short.crt'
