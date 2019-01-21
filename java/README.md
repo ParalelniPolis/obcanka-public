@@ -16,7 +16,9 @@ Požadavky
 - Projekt je vyvíjen na Linuxu (Ubuntu 16.04), ale fungovat by měl i na ostatních Linux distribucích a Windows.
 - Je požadováno Open JDK 8 (Pozor s Oracle JDK nefunguje detekce čtečky karet). S vyšší verzí JDK nelze kompilovat Android část.
 - Pokud chcete kompilovat také Android část odkomentujte Android moduly v settings.gradle
-4. Instrukce pro vývojáře
+
+Instrukce pro vývojáře
+=========
 - Projekt si nejdříve forkněte a své změny do hhlavního projektu zasílejte prostřednictvím pull requestů
 
 Postup
