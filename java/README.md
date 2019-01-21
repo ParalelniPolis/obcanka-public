@@ -5,10 +5,10 @@ Doporučená četba: [zde](https://github.com/ParalelniPolis/obcanka-public/blob
 
 Požadavky
 =========
-1. Podporovaný hardware pro Linux nebo Windows:
+1. Podporovaný hardware pro **Linux** nebo **Windows**:
 - USB Reader HID Omnikey 3021 
 - [Čtečka čipových karet +iD](https://www.xtel.cz/obchod/usb-ctecka-cipovych-karet-id)
-2. Podporovaný hardware pro Android
+2. Podporovaný hardware pro **Android**
 - ACS ACR38U-ND PocketMate II
 - ACS ACR39U-NF PocketMate II USB-C Smart Card Reader
 - ACS ACR39U-N1 PocketMate II
@@ -23,29 +23,33 @@ Instrukce pro vývojáře
 
 Postup
 =========
-0. Stažení projektu
+0. Instalace závislostí (pouze pro Linux)
+```bash
+sudo apt install openjdk-8-jre-headless pcscd
+```
+1. Stažení projektu
 ```bash
  git clone https://github.com/ParalelniPolis/obcanka-public.git
 ```
-1. Kompilace:
+2. Kompilace:
 ```bash
  ./gradlew clean build
 ```
-2. Stažení issuer certifikátů z bitcoin blockchainu.
+3. Stažení issuer certifikátů z bitcoin blockchainu.
 ```bash
  ./gradlew download
 ```
 Certifikát bude uložen do ./public_tools/issuer_of_short.crt
-3. Spuštění příkladu, který přečte certifikáty z eObčanky a uloží je na disk. **Vyžaduje čtečku karet**.
+4. Spuštění příkladu, který přečte certifikáty z eObčanky a uloží je na disk. **Vyžaduje čtečku karet**.
 ```bash
  ./gradlew helloworld
 ```
 Certifikáty budou uloženy do ./desktop_app/short.crt a ./desktop_app/long.crt
-4. Ověření zda byl certifikát stažený z karty vydán issuerem jehož certifikát byl stažen z blockchainu
+5. Ověření zda byl certifikát stažený z karty vydán issuerem jehož certifikát byl stažen z blockchainu
 ```bash
  ./gradlew verify
 ```
-5. Ověření správnosti IOK přihlášením na portál občana. **Vyžaduje čtečku karet**
+6. Ověření správnosti IOK přihlášením na portál občana. **Vyžaduje čtečku karet**
 ```bash
  ./gradlew authenticate
 ```
