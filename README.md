@@ -10,7 +10,7 @@ Seznam projektů pracujících s eObčankou:
 | **eObcanka.NET** |  .NET knihovna pro práci s eObčankou  | https://github.com/wurducius/eObcanka.NET | 
 | **oPYcanka** | Python knihovna pro práci s eObčankou | https://github.com/ParalelniPolis/opycanka |
 | **eobcanka-rust** | Minimální Rust lib impementace pro práci s eObčankou | https://github.com/Qubeo/eobcanka-rust |
-
+| **EOP** | Python skript umožnující výpočet veřejného klíče z podpisu certifikátu uloženého na eObčance  | https://github.com/andrewkozlik/eop
 
 Neveřejné veřejné:
 ==================
