@@ -9,7 +9,7 @@ Příkladové certifikáty(není zač):
 | --- | --- |
 |[short.crt](https://github.com/ParalelniPolis/obcanka-public/blob/master/java/doc/short.crt)| Krátký certifikát. Obsahuje pouze číslo občanského průkazu. Všichni občani jej mají podepsaný stejným klíčem vydavatele.|
 |[long.crt](https://github.com/ParalelniPolis/obcanka-public/blob/master/java/doc/long.crt)|Dlouhý certifikát. Obsahuje veškeré údaje, které jsou uvedeny na obou stranách občanského průkazu. Je podepsaný jiným vydavatelem než krátký certifikát. Vydavatel mění podepisovací klíč jednou měsíčně.|
-|[issuer_of_short.crt](https://github.com/ParalelniPolis/obcanka-public/blob/master/java/doc/issuer_of_short.crt)|Vypočtený certifikát vydavatele dlouhého certifikátu|
+|[issuer_of_short.crt](https://github.com/ParalelniPolis/obcanka-public/blob/master/java/doc/issuer_of_short.crt)|Vypočtený certifikát vydavatele krátkého certifikátu|
 
 Požadavky
 =========
