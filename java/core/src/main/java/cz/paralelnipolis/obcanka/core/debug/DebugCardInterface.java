@@ -20,6 +20,7 @@ import cz.paralelnipolis.obcanka.core.communication.CardException;
 import cz.paralelnipolis.obcanka.core.communication.ICardInterface;
 import cz.paralelnipolis.obcanka.core.communication.ICommandAPDU;
 import cz.paralelnipolis.obcanka.core.communication.IResponseAPDU;
+import cz.paralelnipolis.obcanka.core.debug.interpretations.Custom;
 import cz.paralelnipolis.obcanka.core.debug.interpretations.IInterpreter;
 import cz.paralelnipolis.obcanka.core.debug.interpretations.ISO7816;
 
@@ -80,8 +81,12 @@ public class DebugCardInterface implements ICardInterface {
                 HexUtils.bytesToHexStringWithSpaces(response.getBytes()) + "\n");
         sb.append("                                                Response SW: " +
                 HexUtils.bytesToHexStringWithSpaces(new byte[]{response.getBytes()[response.getBytes().length -2 ], response.getBytes()[response.getBytes().length -1 ] }) + "\n");
-        sb.append("                                              Response Data: " +
-                HexUtils.bytesToHexStringWithSpaces(response.getData()) + " In total: "  + response.getData().length + " bytes.\n");
+        sb.append("                                              Response Data: ");
+        if (response.getData().length == 0 ){
+            sb.append("No data.");
+        }else{
+                sb.append(HexUtils.bytesToHexStringWithSpaces(response.getData()) + " In total: "  + response.getData().length + " bytes.\n");
+        }
 
         return sb.toString();
     }
@@ -181,6 +186,7 @@ public class DebugCardInterface implements ICardInterface {
     private void processInterpretationPackages(CommandDescription cd, ICommandAPDU commandAPDU, IResponseAPDU responseAPDU) {
         StringBuilder sb = new StringBuilder();
         List<IInterpreter> interpreters = new ArrayList<>();
+        interpreters.add(new Custom());
         interpreters.add(new ISO7816());
         for (int i = 0; i < interpreters.size(); i++) {
             IInterpreter interpreter = interpreters.get(i);

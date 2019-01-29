@@ -39,28 +39,35 @@ public class DesktopCardInterface implements ICardInterface {
         TerminalFactory factory = TerminalFactory.getDefault();
         CardTerminals terminals = factory.terminals();
 
-
-        List<CardTerminal> allTerminals = terminals.list();
-        if (allTerminals.isEmpty()) {
-            System.out.println("No CardTerminal seems to be inserted.");
-            return null;
-        }else {
-            System.out.println("List of existing CardTerminals:");
-            for (int i = 0; i < allTerminals.size(); i++) {
-                CardTerminal cardTerminal = allTerminals.get(i);
-                System.out.println("  "+  (i+1) + ". " + cardTerminal);
+        try {
+            List<CardTerminal> allTerminals = terminals.list();
+            if (allTerminals.isEmpty()) {
+                System.out.println("No CardTerminal seems to be inserted.");
+                return null;
+            } else {
+                System.out.println("List of existing CardTerminals:");
+                for (int i = 0; i < allTerminals.size(); i++) {
+                    CardTerminal cardTerminal = allTerminals.get(i);
+                    System.out.println("  " + (i + 1) + ". " + cardTerminal);
+                }
+            }
+            List<CardTerminal> terminalsWithCard = terminals.list(CardTerminals.State.CARD_PRESENT);
+            if (terminalsWithCard.isEmpty()) {
+                System.out.println("Waiting for card to be inserted...");
+                while (terminalsWithCard.isEmpty()) {
+                    terminals.waitForChange(1000);
+                    terminalsWithCard = terminals.list(CardTerminals.State.CARD_PRESENT);
+                }
+            }
+            CardTerminal cardTerminal = terminalsWithCard.get(0);
+            return cardTerminal;
+        }catch (Exception e) {
+            String message = e.getCause().getMessage();
+            if ("SCARD_E_NO_READERS_AVAILABLE".equalsIgnoreCase(message)) {
+                System.err.println("Couldn't find any reader (" + message + ")");
             }
         }
-        List<CardTerminal> terminalsWithCard = terminals.list(CardTerminals.State.CARD_PRESENT);
-        if (terminalsWithCard.isEmpty()) {
-            System.out.println("Waiting for card to be inserted...");
-            while (terminalsWithCard.isEmpty()) {
-                terminals.waitForChange(1000);
-                terminalsWithCard = terminals.list(CardTerminals.State.CARD_PRESENT);
-            }
-        }
-        CardTerminal cardTerminal = terminalsWithCard.get(0);
-        return cardTerminal;
+        return null;
     }
 
     public static DesktopCardInterface create() {

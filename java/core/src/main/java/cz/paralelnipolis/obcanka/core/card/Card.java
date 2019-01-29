@@ -53,8 +53,8 @@ public class Card {
     private static byte[] APP_ID_CARD_MANAGEMENT = {(byte) 0xD2, 0X03, 0x10, 0x01, 0x00, 0x01, 0x00, 0x02, 0x02};
     private static byte[] APP_ID_FILE_MANAGEMENT = {(byte) 0xD2, 0x03, 0x10, 0x01, 0x00, 0x01, 0x03, 0x02, 0x01, 0x00};
 
-    private static int FILE_ID_CERTIFICATE_AUTHORIZATION = 0x0132;
-    private static int FILE_ID_CERTIFICATE_IDENTIFICATION = 0x0001;
+    private static int FILE_ID_CERTIFICATE_AUTHORIZATION = 0x0132; //short
+    private static int FILE_ID_CERTIFICATE_IDENTIFICATION = 0x0001; //long
 
     private ICardInterface c;
     private byte[] currentApplication;

@@ -14,8 +14,10 @@ Příkladové certifikáty(není zač):
 Požadavky
 =========
 1. Podporovaný hardware pro **Linux** nebo **Windows**:
-- USB Reader HID Omnikey 3021 
 - [Čtečka čipových karet +iD](https://www.xtel.cz/obchod/usb-ctecka-cipovych-karet-id)
+- USB Reader HID Omnikey 3021 
+- USB Reader HID Omnikey 5321 
+-
 2. Podporovaný hardware pro **Android**
 - ACS ACR38U-ND PocketMate II
 - ACS ACR39U-NF PocketMate II USB-C Smart Card Reader

@@ -116,6 +116,8 @@ public class ISO7816 implements IInterpreter{
                 p += "Response: Wrong length (wrong Le field: ‘XX’ indicates the exact length) = " + responseAPDU.getSW2();
             }
             sb.append("GET DATA " + p);
+        }else if (cd.ins == 0xCB){
+            sb.append("GET DATA (TAG or LIST)");
         }else if (cd.ins == 0xDA ){
             sb.append("PUT DATA");
         }else if (cd.ins == 0xA4){
@@ -153,19 +155,140 @@ public class ISO7816 implements IInterpreter{
                 }
             }
         }else if (cd.ins == 0x20){
-            sb.append("VERIFY");
+            sb.append("VERIFY (PIN)");
+        }else if (cd.ins == 0x21){
+            sb.append("VERIFY (PIN) with structure");
+        }else if (cd.ins == 0x22){
+            boolean setOrGetCrt = false;
+            sb.append("MANAGE SECURITY ENVIRONMENT -");
+            if ((cd.p1 & 0x0F) == 0x01) {
+                sb.append(" SET");
+                setOrGetCrt = true;
+            }else if ((cd.p1 & 0xFF) == 0xF2) {
+                sb.append(" STORE");
+            }else if ((cd.p1 & 0xFF) == 0xF3) {
+                sb.append(" RESTORE");
+            }else if ((cd.p1 & 0xFF) == 0xF4) {
+                sb.append(" ERASE");
+            }else {
+                if ((cd.p1 & 0x10) == 0x10) {
+                    sb.append(" Secure messaging in command data field");
+                }
+                if ((cd.p1 & 0x20) == 0x20) {
+                    sb.append(" Secure messaging in response data field");
+                }
+                if ((cd.p1 & 0x40) == 0x40) {
+                    sb.append(" Computation, decipherment, internal authentication and key agreement");
+                }
+                if ((cd.p1 & 0x80) == 0x80) {
+                    sb.append(" Verification, encipherment, external authentication and key agreement");
+                }
+            }
+            if (setOrGetCrt) {
+                switch (cd.p2) {
+                    case 0xA4:
+                        sb.append(" Control reference template for authentication (AT)");
+                        break;
+                    case 0xA6:
+                        sb.append(" Control reference template for key agreement (KAT)");
+                        break;
+                    case 0xAA:
+                        sb.append(" Control reference template for hash-code (HT)");
+                        break;
+                    case 0xB4:
+                        sb.append(" Control reference template for cryptographic checksum (CCT)");
+                        break;
+                    case 0xB6:
+                        sb.append(" Control reference template for digital signature (DST)");
+                        break;
+                    case 0xB8:
+                        sb.append(" Control reference template for confidentiality (CT)");
+                        break;
+                }
+            }else{
+
+            }
+        }else if (cd.ins == 0x86 || cd.ins == 0x87){
+            sb.append("GENERAL AUTHENTICATE");
+            if (cd.requestData.length > 2) {
+                if (cd.requestData[0] == 0x7c) {
+                    sb.append(" Set of dynamic authentication data objects with the following tag: ");
+                    switch (cd.requestData[1]) {
+                        case (byte)0x80:
+                            sb.append("Witness");
+                            break;
+                        case (byte)0x81:
+                            sb.append("Challenge");
+                            break;
+                        case (byte)0x82:
+                            sb.append("Response");
+                            break;
+                        case (byte)0x83:
+                            sb.append("Committed challenge ");
+                            break;
+                        case (byte)0x84:
+                            sb.append("Authentication code");
+                            break;
+                        case (byte)0x85:
+                            sb.append("Exponential");
+                            break;
+                        case (byte)0xA0:
+                            sb.append("Identification data template");
+                            break;
+                    }
+                }
+            }
         }else if (cd.ins == 0x88){
             sb.append("INTERNAL AUTHENTICATE");
         }else if (cd.ins == 0xB2){
             sb.append("EXTERNAL AUTHENTICATE");
         }else if (cd.ins == 0xB4 ){
             sb.append("GET CHALLENGE");
+        }else if (cd.ins == 0x46 ){
+            sb.append("GENERATE ASYMMETRIC KEY PAIR");
         }else if (cd.ins == 0x70){
             sb.append("MANAGE CHANNEL");
         }else if (cd.ins == 0xC0){
             sb.append("GET RESPONSE");
         }else if (cd.ins == 0xC2){
             sb.append("ENVELOPE");
+        }else if (cd.ins == 0x2a){
+            sb.append("PERFORM SECURITY OPERATION");
+            if (cd.p1 == 0x80) {
+                sb.append(" - DECIPHER");
+            }else if (cd.p1 == 0x82) {
+                sb.append(" - ENCIPHER");
+            }else if (cd.p1 == 0x8e) {
+                sb.append(" - COMPUTE CRYPTOGRAPHIC CHECKSUM");
+            }else if (cd.p1 == 0x90) {
+                sb.append(" - HASH");
+                if (cd.p2 == 0x80) {
+                    sb.append(" - data field contains data to be hashed.");
+                }else if (cd.p2 == 0xa0) {
+                    sb.append(" - data field contains reference to be hashed.");
+                }
+            }else if (cd.p1 == 0x9e) {
+                sb.append(" - COMPUTE DIGITAL SIGNATURE");
+                if (cd.p2 == 0x9A) {
+                    sb.append(" - data field contains data to be signed.");
+                } else if (cd.p2 == 0xac) {
+                    sb.append(" - data field contains reference to be signed.");
+                } else if (cd.p2 == 0xbc) {
+                    sb.append(" - data field contains reference to be signed.");
+                }
+            }else if (cd.p1 == 0x00) {
+                if (cd.p2 == 0xA2) {
+                    sb.append(" - VERIFY CRYPTOGRAPHIC CHECKSUM");
+                } else if (cd.p2 == 0xA8) {
+                    sb.append(" - VERIFY DIGITAL SIGNATURE");
+                } else if (cd.p2 == 0x92 || cd.p2 == 0xae || cd.p2 == 0xbe ) {
+                    sb.append(" - VERIFY CERTIFICATE");
+                }
+            }
+        }else if (cd.ins == 0x84){
+            sb.append("GET CHALLENGE");
+        }else if (cd.ins == 0x82){
+            sb.append("EXTERNAL (/ MUTUAL) AUTHENTICATE");
         }
     }
 }
